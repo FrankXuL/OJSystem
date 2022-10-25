@@ -1,6 +1,6 @@
-import Utils.Task;
-import enity.Answer;
-import enity.Question;
+import Compile.Task;
+import Compile.Answer;
+import Compile.Question;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

@@ -1,7 +1,6 @@
-package Utils;
+package Compile;
 
-import enity.Answer;
-import enity.Question;
+import Utils.FileUtil;
 
 import java.io.File;
 
