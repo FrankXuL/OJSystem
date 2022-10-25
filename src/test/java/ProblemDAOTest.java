@@ -16,13 +16,13 @@ import java.util.List;
 public class ProblemDAOTest {
 
     @Before
-    public void before() throws Exception {
-        System.out.println("测试开始");
+    public void before() {
+        System.out.println("ProblemDAO类测试开始");
     }
 
     @After
-    public void after() throws Exception {
-        System.out.println("测试结束");
+    public void after() {
+        System.out.println("ProblemDAO类测试结束");
     }
 
     /**
@@ -39,7 +39,7 @@ public class ProblemDAOTest {
      * Method: selectOne(int problemId)
      */
     @Test
-    public void testSelectOne() throws Exception {
+    public void testSelectOne()  {
         ProblemDAO problemDAO = new ProblemDAO();
         Problem problem = problemDAO.selectOne(2);
         System.out.println(problem);
@@ -49,7 +49,7 @@ public class ProblemDAOTest {
      * Method: insert(Problem problem)
      */
     @Test
-    public void testInsert() throws Exception {
+    public void testInsert()  {
         ProblemDAO problemDAO = new ProblemDAO();
         Problem problem = new Problem();
         // problem.setId();
@@ -124,7 +124,7 @@ public class ProblemDAOTest {
      * Method: delete(int id)
      */
     @Test
-    public void testDelete() throws Exception {
+    public void testDelete()  {
         ProblemDAO problemDAO = new ProblemDAO();
         problemDAO.delete(1);
     }

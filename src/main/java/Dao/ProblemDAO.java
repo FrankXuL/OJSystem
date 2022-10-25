@@ -84,6 +84,7 @@ public class ProblemDAO {
             connection = DBUtil.getConnection();
             // 2. 构造 SQL 语句
             String sql = "insert into oj_table values(null, ?, ?, ?, ?, ?)";
+            assert connection != null;
             statement = connection.prepareStatement(sql);
             statement.setString(1, problem.getTitle());
             statement.setString(2, problem.getLevel());
@@ -113,6 +114,7 @@ public class ProblemDAO {
             connection = DBUtil.getConnection();
             // 2. 拼装 SQL 语句
             String sql = "delete from oj_table where id = ?";
+            assert connection != null;
             statement = connection.prepareStatement(sql);
             statement.setInt(1, id);
             // 3. 执行 SQL
@@ -122,8 +124,8 @@ public class ProblemDAO {
             } else {
                 System.out.println("删除题目成功!");
             }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
         } finally {
             DBUtil.close(connection, statement, null);
         }

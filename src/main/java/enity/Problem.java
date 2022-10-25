@@ -6,7 +6,7 @@ package enity;
  * @Date: 24/10/2022 下午 2:31
  * @Version 1.0
  */
-@SuppressWarnings({"all"})
+
 public class Problem {
     private int id;
     private String title;
