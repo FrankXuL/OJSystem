@@ -3,6 +3,7 @@ package Compile;
 import Utils.FileUtil;
 
 import java.io.File;
+import java.util.UUID;
 
 /**
  * @title: Task
@@ -12,18 +13,27 @@ import java.io.File;
  */
 public class Task {
     //目录
-    private static final String WORK_DIR = "./tmp/";
+    private  String WORK_DIR = null;
     //编译代码的类名
-    private static final String CLASS = "Solution";
+    private  String CLASS = null;
     //存放编译代码的文件名
-    private static final String CODE = WORK_DIR + "Solution.java";
+    private  String CODE = null;
     //存放编译错误信息的文文件名
-    private static final String COMPILE_ERROR = WORK_DIR + "compileError.txt";
+    private  String COMPILE_ERROR = null;
     //存放标准输出的文件名
-    private static final String STDOUT = WORK_DIR + "stdout.txt";
+    private  String STDOUT = null;
     //存放运行时标准错误的文件名
-    private static final String STDERR = WORK_DIR + "Stderr.txt";
+    private  String STDERR = null;
 
+    public Task() {
+        // 在 Java 中使用 UUID 这个类就能生成一个 UUID 了
+        WORK_DIR = "./tmp/" + UUID.randomUUID().toString() + "/";
+        CLASS = "Solution";
+        CODE = WORK_DIR + "Solution.java";
+        COMPILE_ERROR = WORK_DIR + "compileError.txt";
+        STDOUT = WORK_DIR + "stdout.txt";
+        STDERR = WORK_DIR + "stderr.txt";
+    }
     public Answer compileAndRun(Question question) {
         Answer answer = new Answer();
         File workDir = new File(WORK_DIR);
