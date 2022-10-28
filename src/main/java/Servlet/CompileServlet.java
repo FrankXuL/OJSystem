@@ -37,7 +37,7 @@ public class CompileServlet extends HttpServlet {
         public String stdout;
     }
 
-    private static final ObjectMapper objectMapper = new ObjectMapper();
+    private  ObjectMapper objectMapper = new ObjectMapper();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

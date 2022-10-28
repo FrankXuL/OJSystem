@@ -1,6 +1,6 @@
-import Compile.Task;
 import Compile.Answer;
 import Compile.Question;
+import Compile.Task;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
