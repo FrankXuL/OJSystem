@@ -3,6 +3,8 @@ package Compile;
 import Utils.FileUtil;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -40,6 +42,12 @@ public class Task {
         if (!workDir.exists()) {
             workDir.mkdirs();
         }
+        if (!checkCodeSafe(question.getCode())) {
+            System.out.println("用户提交了不安全的代码!");
+            answer.setError(3);
+            answer.setReason("您提交的代码可能会危害到服务器, 禁止运行!");
+            return answer;
+        }
         FileUtil.writeFile(CODE, question.getCode());
         //编译
         String compileCmd = String.format("javac -encoding utf8 %s -d %s", CODE, WORK_DIR);
@@ -68,6 +76,21 @@ public class Task {
         answer.setError(0);
         answer.setStdout(FileUtil.readFile(STDOUT));
         return answer;
+    }
+
+    private boolean checkCodeSafe(String code) {
+        List<String> blackList = new ArrayList<>();
+        blackList.add("Runtime");
+        blackList.add("exec");
+        blackList.add("java.io");
+        blackList.add("java.net");
+        for (String target : blackList) {
+            int pos = code.indexOf(target);
+            if (pos >= 0) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }

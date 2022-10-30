@@ -20,7 +20,7 @@ public class FileUtil {
                 if (ch == -1) {
                     break;
                 }
-                result.append(ch);
+                result.append((char) ch);
             }
         } catch (IOException e) {
             e.printStackTrace();

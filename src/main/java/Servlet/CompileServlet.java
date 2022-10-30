@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 
 /**
  * @title: CompileServlet
@@ -84,8 +85,9 @@ public class CompileServlet extends HttpServlet {
         if (pos == -1) {
             return null;
         }
-        String subString = requestCode.substring(0, pos);
-        return subString + "}";
+        String subStr = requestCode.substring(0, pos);
+        // 3. 进行拼接
+        return subStr + testCode + "\n}";
     }
 
     private static String readBody(HttpServletRequest req) {
@@ -96,6 +98,6 @@ public class CompileServlet extends HttpServlet {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return new String(bytes);
+        return new String(bytes, StandardCharsets.UTF_8);
     }
 }
